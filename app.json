@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.eskyozar.Ishitori"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c575824a-0402-46b7-84f0-c09b8dc6d49e"
+      }
+    },
+    "owner": "eskyozar"
   }
 }
