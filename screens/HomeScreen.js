@@ -3,9 +3,10 @@
 // Module imports
 
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView  , Image , StyleSheet , FlatList , ActivityIndicator , Modal, TouchableOpacity, Dimensions} from 'react-native';
+import {SafeAreaView  ,  StyleSheet , FlatList , ActivityIndicator , Modal, TouchableOpacity, Dimensions , VirtualizedList} from 'react-native';
 import ImageDownload from '../components/ImageDownload';
 import { parseString } from 'xml2js';
+import { Image } from 'expo-image';
 
 // Getting Dimensions for the screen
 
@@ -33,11 +34,11 @@ const HomeScreen = ({ route }) => {
 
     // Checking what type of content the user wants
 
-    if (value == "safeurl"){
+    if (value === "safeurl"){
 
         selectedeurl = safeurl
 
-    } else if (value == "nsfwurl"){
+    } else {
 
         selectedeurl = nsfwurl
 
@@ -64,6 +65,7 @@ const HomeScreen = ({ route }) => {
                 const image = {
                     file_url: post.$.file_url,
                     tags: post.$.tags,
+                    preview_url: post.$.preview_url,
                 };
 
                 images.push(image);
@@ -78,6 +80,8 @@ const HomeScreen = ({ route }) => {
 
     // This is used to render images to the FlatList Component
 
+    // Old Way of rendering Images 
+    
     const renderImage = ({ item }) => {
 
         // Old way of rendering images = <Image source={{ uri: item.file_url }} style={styles.image}/>
@@ -86,7 +90,7 @@ const HomeScreen = ({ route }) => {
 
             <TouchableOpacity onPress={() => setSelectedImage(item.file_url)} key={item.file_url}>
 
-                <Image source={{ uri: item.file_url }} style={styles.image}/>
+                <Image source={{ uri: item.preview_url }} style={styles.image}/>
 
             </TouchableOpacity>
             
@@ -165,6 +169,7 @@ const HomeScreen = ({ route }) => {
 
                 />
 
+
             )}
 
             <Modal
@@ -180,7 +185,7 @@ const HomeScreen = ({ route }) => {
 
                     <ImageDownload imageUri={selectedImage}/>
 
-                    <Image source={{ uri: selectedImage }} style={styles.imagefullscreen} resizeMode='contain'/>
+                    <Image source={{ uri: selectedImage }} style={styles.imagefullscreen} contentFit='contain'/>
 
                 </TouchableOpacity>
 
