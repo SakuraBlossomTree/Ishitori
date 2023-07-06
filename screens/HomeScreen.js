@@ -10,7 +10,7 @@ import { Image } from 'expo-image';
 
 // Getting Dimensions for the screen
 
-const { width , height } = Dimensions.get('screen');
+const { width , height } = Dimensions.get('window');
 
 // Main Homscreen App
 
