@@ -23,6 +23,12 @@ const App = () => {
 
     return(
 
+        // It returns a SafeAreaProvider which I had to include because of errors when building it with expo
+
+        // Then a NavigationContainer which has the Drawers
+
+        // Then Two Drawer Screens which are the SideBar and the HomeScreen
+
         <SafeAreaProvider>
             <NavigationContainer>
                 <Drawer.Navigator>
@@ -41,5 +47,7 @@ const App = () => {
         </SafeAreaProvider>
         );
 };
+
+// Exporting the App component
 
 export default App;

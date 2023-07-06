@@ -13,70 +13,22 @@ import cheerio from 'react-native-cheerio';
 const SideBar = ({ navigation }) => {
 
     // Serval variables like loli
-    const [tags , setTags] = useState('rem_(re:zero)');
-    const [limit , setLimit] = useState('100');
-    const [open , setOpen] = useState(false);
-    const [value , setValue] = useState(null);
+    const [tags , setTags] = useState('rem_(re:zero)'); // The tags state
+    const [limit , setLimit] = useState('100'); // the limit state
+    const [open , setOpen] = useState(false); // the open Drawer state
+    const [value , setValue] = useState(null); // the value Drawer state
     const [items , setItems] = useState([
 
         {label: "SFW" , value: "safeurl"},
         {label: "NSFW" , value: "nsfwurl"}
 
-    ]);
-
-    const [suggestions , setSuggestions] = useState([]);
-    
-    const fetchTagSuggestions = async () => {
-
-        try {
-
-            const response = await axios.get('https://safebooru.org/index.php?page=tags&s=list');
-
-            // console.log(response)
-
-            const html = response.data;
-
-            // console.log(html)
-
-            const $ = cheerio.load(html);
-
-            const tags = [];
-
-            $('body > table.highlightable > tbody > tr > td > a').each(
-
-                (index, element) => {
-
-                    //console.log(element);
-                    tags.push($(element).text());
-
-                }
-
-            );
-
-            //console.log(tags);
-
-            setSuggestions(tags);
-
-        } catch ( error ) {
-
-            console.error("Error fetching tags: " , error);
-
-        }
-
-    }
-
-    useEffect(() => {
-
-        fetchTagSuggestions();
-
-    }, [])
-
+    ]); // The item's for the Drawer
 
     // Check Sus function because why not lol
 
     const checkSus = ({ tags , value }) => {
 
-        if (tags == "loli" || value == "loliurl"){
+        if (tags == "loli" || value == "swimsuit" || value == "panties"){
 
             Alert.alert("Ohh my days!!");
 
@@ -84,53 +36,31 @@ const SideBar = ({ navigation }) => {
 
     }
 
-    const handleInputChange = (text) => {
-
-        setTags(text);
-
-    }
-
-    const handleTagsSelect = (tag) => {
-
-        setTags(tag);
-
-    }
-
-    const renderTagSelection = () => {
-        return suggestions.map((tag) => (
-          <TouchableOpacity
-            style={styles.tagButton}
-            key={tag}
-            onPress={() => handleTagsSelect(tag)}
-          >
-            <Text style={styles.tagText}>{tag}</Text>
-          </TouchableOpacity>
-        ));
-    };
     // Render the differnet components again
 
     return (
         
+        // Rendering a View
+
         <View style={styles.homepagecontainer}>
 
-            <View style={styles.tagSuggestionsContainer}>{renderTagSelection()}</View>
-
-            <TextInput
+            <TextInput // Text Input box for the tags input
                 style={styles.text}
                 placeholder='Search Tags'
                 value={tags}
-                // onChangeText={setTags}
-                onChangeText={handleInputChange}
+                onChangeText={setTags}
             />
 
-            <TextInput
+            <TextInput // Text Input box for limit input
                 style={styles.text}
                 placeholder='Search Limit'
                 value={limit}
                 onChangeText={setLimit}
             />
 
-            <Button
+            <Button // When pressing this button will call the checkSus function and then navigate you to the HomeScreen where the images will be fetched
+
+                    // Later maybe going to remove this because the Search for tags and limit and the images will be in a single Screen
                 onPress={() => {
 
                     checkSus({ tags })
@@ -144,7 +74,7 @@ const SideBar = ({ navigation }) => {
                 color="#000000"
             />
 
-            <DropDownPicker 
+            <DropDownPicker // DropDownPicker component for choosing what type of content you want
 
                 style={styles.dropdowncontainer}
                 open={open}
@@ -156,22 +86,6 @@ const SideBar = ({ navigation }) => {
 
             />
 
-            {suggestions.map((tag) => (
-                    
-                    <Button
-                    
-                        key={tag}
-                        
-                        title={tag}
-                        
-                        onPress={() => handleTagsSelect(tag)}
-                        
-                        color="#000000"
-                    
-
-                    />
-            ))}
-
         </View>
 
     );
@@ -181,6 +95,8 @@ const SideBar = ({ navigation }) => {
 // Various styles
 
 const styles = StyleSheet.create({
+
+    // Home Page container
 
     homepagecontainer: {
 
@@ -194,11 +110,15 @@ const styles = StyleSheet.create({
 
     },
 
+    // The Text style
+
     text: {
 
         fontSize: 30,
         
     },
+
+    // The drop down container
 
     dropdowncontainer: {
 
@@ -206,37 +126,9 @@ const styles = StyleSheet.create({
 
     },
 
-    tagSuggestionsContainer: {
-        
-        flexDirection: 'row',
-        
-        flexWrap: 'wrap',
-        
-        marginTop: 10
-    
-    },
-    
-    tagButton: {
-        
-        backgroundColor: '#eaeaea',
-        
-        borderRadius: 10,
-        
-        paddingHorizontal: 10,
-        
-        paddingVertical: 5,
-        
-        margin: 5
-    
-    },
-    
-    tagText: {
-        
-        fontSize: 16
-      
-    }
-
 
 });
+
+// Exporting the SideBar component (It is not a SideBar I know that, I am just bad at making names)
 
 export default SideBar;
