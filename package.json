@@ -1,11 +1,10 @@
 {
   "name": "ishitori",
   "version": "0.1.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web"
   },
   "dependencies": {
@@ -15,6 +14,7 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "axios": "^1.4.0",
+    "bundle": "^2.1.0",
     "cheerio": "^1.0.0-rc.12",
     "expo": "^48.0.0",
     "expo-file-system": "^15.2.2",
@@ -25,7 +25,7 @@
     "expo-status-bar": "~1.4.4",
     "expo-updates": "~0.16.4",
     "react": "18.2.0",
-    "react-native": "0.71.8",
+    "react-native": "^0.71.8",
     "react-native-autocomplete-input": "^5.3.2",
     "react-native-cheerio": "^1.0.0-rc.4",
     "react-native-dropdown-picker": "^5.4.6",

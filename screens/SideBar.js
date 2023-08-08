@@ -5,15 +5,13 @@
 import React, { useEffect, useState } from 'react';
 import { View , TextInput , StyleSheet , Button, Alert} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import axios from 'axios';
-import cheerio from 'react-native-cheerio';
 
 // Main function
 
 const SideBar = ({ navigation }) => {
 
     // Serval variables like loli
-    const [tags , setTags] = useState('rem_(re:zero)'); // The tags state
+    const [tags , setTags] = useState('hu_tao_(genshin_impact) scenery'); // The tags state
     const [limit , setLimit] = useState('100'); // the limit state
     const [open , setOpen] = useState(false); // the open Drawer state
     const [value , setValue] = useState(null); // the value Drawer state

@@ -3,10 +3,9 @@
 // Module imports
 
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView  ,  StyleSheet , FlatList , ActivityIndicator , Modal, TouchableOpacity, Dimensions , VirtualizedList} from 'react-native';
+import {SafeAreaView , Image , Alert , StyleSheet , FlatList , ActivityIndicator , Modal, TouchableOpacity, Dimensions} from 'react-native';
 import ImageDownload from '../components/ImageDownload';
 import { parseString } from 'xml2js';
-import { Image } from 'expo-image';
 
 // Getting Dimensions for the screen
 
@@ -94,7 +93,11 @@ const HomeScreen = ({ route }) => {
 
         return (
 
-            <TouchableOpacity onPress={() => setSelectedImage(item.file_url)} key={item.file_url}>
+            <TouchableOpacity onPress={() => {
+                
+                    setSelectedImage(item.file_url)
+                
+                }} key={item.file_url}>
 
                 <Image source={{ uri: item.preview_url }} style={styles.image}/>
 
@@ -227,7 +230,7 @@ const HomeScreen = ({ route }) => {
 
                     <ImageDownload imageUri={selectedImage}/>
 
-                    <Image source={{ uri: selectedImage }} style={styles.imagefullscreen} contentFit='contain'/>
+                    <Image source={{ uri: fullscreenImage}} style={styles.imagefullscreen} resizeMode='contain'/>
 
                 </TouchableOpacity>
 
