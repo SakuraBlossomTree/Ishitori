@@ -3,7 +3,7 @@
 // Module imports
 
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView , Image , Alert , StyleSheet , FlatList , ActivityIndicator , Modal, TouchableOpacity, Dimensions} from 'react-native';
+import {SafeAreaView , Image , StyleSheet , FlatList , ActivityIndicator , Modal, TouchableOpacity, Dimensions} from 'react-native';
 import ImageDownload from '../components/ImageDownload';
 import { parseString } from 'xml2js';
 
@@ -230,7 +230,7 @@ const HomeScreen = ({ route }) => {
 
                     <ImageDownload imageUri={selectedImage}/>
 
-                    <Image source={{ uri: fullscreenImage}} style={styles.imagefullscreen} resizeMode='contain'/>
+                    <Image source={{ uri: selectedImage}} style={styles.imagefullscreen} resizeMode='contain'/>
 
                 </TouchableOpacity>
 

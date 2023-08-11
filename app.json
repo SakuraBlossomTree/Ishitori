@@ -33,6 +33,10 @@
         "projectId": "c575824a-0402-46b7-84f0-c09b8dc6d49e"
       }
     },
-    "owner": "eskyozar"
+    "owner": "eskyozar",
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/c575824a-0402-46b7-84f0-c09b8dc6d49e"
+    }
   }
 }
