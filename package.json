@@ -13,7 +13,7 @@
     "@react-navigation/drawer": "^6.6.3",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
-    "axios": "^1.6.0",
+    "axios": "^1.8.2",
     "bundle": "^2.1.0",
     "cheerio": "^1.0.0-rc.12",
     "expo": "^49.0.0",
