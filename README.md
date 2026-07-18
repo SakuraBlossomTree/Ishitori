@@ -16,7 +16,7 @@ Pre-built Android APKs are available from the **Releases** page of this reposito
 
 ## Screenshots
 
-Screenshots will be added in a future update.
+![screenshot screen](Ishitori.jpg)
 
 ## Installation
 
